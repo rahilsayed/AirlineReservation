@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AirlineReservationSystem.Entities
 {
-    public class AirLineDbContext : DbContext
+    public class AirlineDBContext : DbContext
     {
         //Entity Sets
         public DbSet<User> Users { get; set; }
@@ -15,7 +15,7 @@ namespace AirlineReservationSystem.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=MSI\SQLEXPRESS; Database=AirLineDB; Integrated Security=true");
+            optionsBuilder.UseSqlServer(@"Server=MSI\SQLEXPRESS; Database=AirlineDB; Integrated Security=true");
         }
     }
 }
