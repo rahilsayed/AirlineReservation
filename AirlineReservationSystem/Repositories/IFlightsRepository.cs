@@ -6,10 +6,10 @@ using AirlineReservationSystem.Entities;
 
 namespace AirlineReservationSystem.Repositories
 {
-    interface IFlightsRepository
+    public interface IFlightsRepository
     {
-        List<Flight> ViewFlights(int FlightID);
-        List<Flight> AddFlight(int FlightID, string Origin, string Destination, DateTime DepartureTime, DateTime ArrivalTime, int NumberOfSeats, double Fare);
+        List<Flight> ViewFlights();
+        List<Flight> AddFlight(int FlightID, string Origin, string Destination, DateTime DepartureTime, DateTime ArrivalTime, int NumberOfSeats, float Fare);
         List<Flight> RemoveFlight(int FlightID);
 
     }

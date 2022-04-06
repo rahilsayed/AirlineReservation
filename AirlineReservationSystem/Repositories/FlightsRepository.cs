@@ -10,19 +10,41 @@ namespace AirlineReservationSystem.Repositories
     {
         private readonly AirlineDBContext DB = new AirlineDBContext();
 
-        public List<Flight> AddFlight(int FlightID, string Origin, string Destination, DateTime DepartureTime, DateTime ArrivalTime, int NumberOfSeats, double Fare)
+        public List<Flight> AddFlight(int FlightID, string Origin, string Destination, DateTime DepartureTime, DateTime ArrivalTime, int NumberOfSeats, float Fare)
         {
-            throw new NotImplementedException();
+            Flight flight = new Flight();
+            
+            flight.FlightID = FlightID;
+            flight.LaunchDate = DateTime.Now;
+            flight.Origin = Origin;
+            flight.Destination = Destination;
+            flight.DeptTime = DepartureTime;
+            flight.ArrivalTime = ArrivalTime;
+            flight.NoOfSeats = NumberOfSeats;
+            flight.Fare = Fare;
+
+            DB.Flights.Add(flight);
+            DB.SaveChanges();
+
+            var result = DB.Flights.ToList();
+            return result;
         }
 
         public List<Flight> RemoveFlight(int FlightID)
         {
-            throw new NotImplementedException();
+            var flight = DB.Flights.Where(x => x.FlightID == FlightID).SingleOrDefault();
+
+            DB.Remove(flight);
+            DB.SaveChanges();
+
+            var result = DB.Flights.ToList();
+            return result;
         }
 
-        public List<Flight> ViewFlights(int FlightID)
+        public List<Flight> ViewFlights()
         {
-            throw new NotImplementedException();
+            var result = DB.Flights.ToList();
+            return result;
         }
     }
 }

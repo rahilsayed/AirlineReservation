@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AirlineReservationSystem.Repositories
 {
-    public class ReservationsRepository
+    public class ReservationsRepository : IReservationsRepository
     {
     }
 }

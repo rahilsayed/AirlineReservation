@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AirlineReservationSystem.Repositories;
 
 namespace AirlineReservationSystem
 {
@@ -27,6 +28,11 @@ namespace AirlineReservationSystem
         {
 
             services.AddControllers();
+
+            services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IFlightsRepository, FlightsRepository>();
+            services.AddScoped<IReservationsRepository, ReservationsRepository>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "AirlineReservationSystem", Version = "v1" });
