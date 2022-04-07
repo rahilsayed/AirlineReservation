@@ -17,13 +17,17 @@ namespace AirlineReservationSystem.Repositories
 
         public Reservation CancelTicket(int TicketNo)
         {
-            DB.Reservations.Where(x => x.TicketNo == TicketNo).ToList().ForEach(f => f.Status = "Cancelled");
+            DB.Reservations.Where(x => x.TicketNo == TicketNo)
+                            .ToList()
+                            .ForEach(f => f.Status = "Cancelled");
+
             return DB.Reservations.Where(x => x.TicketNo == TicketNo).SingleOrDefault();
         }
 
         public Reservation ViewTicketStatus(int TicketNo)
         {
-            return DB.Reservations.Where(x => x.TicketNo == TicketNo).SingleOrDefault();
+            return DB.Reservations.Where(x => x.TicketNo == TicketNo)
+                                    .SingleOrDefault();
         }
     }
 }

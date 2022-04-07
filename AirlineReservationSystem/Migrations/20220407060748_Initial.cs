@@ -11,13 +11,12 @@ namespace AirlineReservationSystem.Migrations
                 name: "Flights",
                 columns: table => new
                 {
-                    FlightID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FlightID = table.Column<int>(type: "int", nullable: false),
                     LaunchDate = table.Column<DateTime>(type: "Date", nullable: false),
                     Origin = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
                     Destination = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
-                    DeptTime = table.Column<DateTime>(type: "Date", nullable: false),
-                    ArrivalTime = table.Column<DateTime>(type: "Date", nullable: false),
+                    DeptTime = table.Column<string>(type: "varchar", nullable: false),
+                    ArrivalTime = table.Column<string>(type: "varchar", nullable: false),
                     NoOfSeats = table.Column<int>(type: "int", nullable: false),
                     Fare = table.Column<decimal>(type: "decimal(38,17)", nullable: false)
                 },
@@ -30,8 +29,7 @@ namespace AirlineReservationSystem.Migrations
                 name: "Reservations",
                 columns: table => new
                 {
-                    TicketNo = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TicketNo = table.Column<int>(type: "int", nullable: false),
                     FlightID = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
                     DateOfBooking = table.Column<DateTime>(type: "Date", nullable: false),
                     JourneyDate = table.Column<DateTime>(type: "Date", nullable: false),
@@ -51,8 +49,7 @@ namespace AirlineReservationSystem.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Username = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
                     Password = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false)
                 },

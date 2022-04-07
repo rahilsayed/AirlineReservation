@@ -14,6 +14,7 @@ namespace AirlineReservationSystem.Entities
         //FlightId 
         [Key]
         [Column(TypeName = "int")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int FlightID { get; set; }
 
         // Date when the Flight was added to the fleet

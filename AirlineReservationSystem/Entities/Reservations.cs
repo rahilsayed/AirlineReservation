@@ -13,6 +13,7 @@ namespace AirlineReservationSystem.Entities
     {
         [Key] // TicketNo generated after Booking a flight
         [Column(TypeName = "int")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int TicketNo { get; set; }
 
         //FlightNo of booked FLight

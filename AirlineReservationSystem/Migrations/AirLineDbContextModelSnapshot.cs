@@ -22,15 +22,15 @@ namespace AirlineReservationSystem.Migrations
             modelBuilder.Entity("AirlineReservationSystem.Entities.Flight", b =>
                 {
                     b.Property<int>("FlightID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
-                    b.Property<DateTime>("ArrivalTime")
-                        .HasColumnType("Date");
+                    b.Property<string>("ArrivalTime")
+                        .IsRequired()
+                        .HasColumnType("varchar");
 
-                    b.Property<DateTime>("DeptTime")
-                        .HasColumnType("Date");
+                    b.Property<string>("DeptTime")
+                        .IsRequired()
+                        .HasColumnType("varchar");
 
                     b.Property<string>("Destination")
                         .IsRequired()
@@ -59,9 +59,7 @@ namespace AirlineReservationSystem.Migrations
             modelBuilder.Entity("AirlineReservationSystem.Entities.Reservation", b =>
                 {
                     b.Property<int>("TicketNo")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<long>("ContactNo")
                         .HasColumnType("bigint");
@@ -106,9 +104,7 @@ namespace AirlineReservationSystem.Migrations
             modelBuilder.Entity("AirlineReservationSystem.Entities.User", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Password")
                         .IsRequired()
