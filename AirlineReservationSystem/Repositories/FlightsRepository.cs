@@ -57,9 +57,11 @@ namespace AirlineReservationSystem.Repositories
             return DB.Flights.ToList();
         }
 
-        public List<Flight> ViewFlights()
-        {
-            return DB.Flights.ToList();
+        public List<Flight> ViewFlights(string Source, string Destination)
+        {   if (Source != null && Destination != null)
+                return DB.Flights.Where(x => x.Origin == Source && x.Destination == Destination).ToList();
+            else
+                return DB.Flights.ToList();
         }
     }
 }

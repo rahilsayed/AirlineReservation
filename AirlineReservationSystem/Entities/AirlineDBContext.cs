@@ -15,7 +15,7 @@ namespace AirlineReservationSystem.Entities
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=MSI\SQLEXPRESS; Database=AirlineDB; Integrated Security=true");
+            optionsBuilder.UseSqlServer(@"Server=LAPTOP-TCAP8KPA\SQLEXPRESS; Database=AirlineDB; Integrated Security=true");
         }
     }
 }

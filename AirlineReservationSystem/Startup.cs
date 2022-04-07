@@ -11,6 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AirlineReservationSystem.Repositories;
+using Microsoft.AspNetCore.Cors;
+using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace AirlineReservationSystem
 {
@@ -26,7 +29,14 @@ namespace AirlineReservationSystem
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
             services.AddControllers();
 
             services.AddScoped<IUsersRepository, UsersRepository>();
@@ -48,9 +58,15 @@ namespace AirlineReservationSystem
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AirlineReservationSystem v1"));
             }
-
             app.UseRouting();
 
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -58,5 +74,6 @@ namespace AirlineReservationSystem
                 endpoints.MapControllers();
             });
         }
+        
     }
 }
