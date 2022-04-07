@@ -21,6 +21,12 @@ namespace AirlineReservationSystem.Controllers
         }
 
         [HttpPut]
+        public string BookTicket(string FlightID, DateTime JourneyDate, string PassengerName, int ContactNo, string Email, int NoOftickets)
+        {
+            return reservationsRepository.BookTicket(FlightID,  JourneyDate,  PassengerName,  ContactNo,  Email,  NoOftickets);
+        }
+
+        [HttpPut]
         [Route("TicketNo")]
         public Reservation CancelTicket(int TicketNo)
         {

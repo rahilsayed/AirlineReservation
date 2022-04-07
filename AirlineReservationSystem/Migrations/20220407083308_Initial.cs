@@ -11,7 +11,7 @@ namespace AirlineReservationSystem.Migrations
                 name: "Flights",
                 columns: table => new
                 {
-                    FlightID = table.Column<int>(type: "int", nullable: false),
+                    FlightID = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
                     LaunchDate = table.Column<DateTime>(type: "Date", nullable: false),
                     Origin = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
                     Destination = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
@@ -31,7 +31,7 @@ namespace AirlineReservationSystem.Migrations
                 {
                     TicketNo = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FlightID = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
+                    FlightID = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
                     DateOfBooking = table.Column<DateTime>(type: "Date", nullable: false),
                     JourneyDate = table.Column<DateTime>(type: "Date", nullable: false),
                     PassengerName = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),

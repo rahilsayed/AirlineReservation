@@ -12,7 +12,7 @@ namespace AirlineReservationSystem.Repositories
 
         public string BookTicket(string FlightID, DateTime JourneyDate, string PassengerName, int ContactNo, string Email, int NoOftickets)
         {
-            var BookingsMade = DB.Reservations.Where(x => x.FlightID == FlightID && x.JourneyDate == JourneyDate).ToList().Count;
+            var BookingsMade = DB.Reservations.Where(x => x.FlightID == FlightID && x.JourneyDate == JourneyDate && x.Status == "Booked").Select(x => x.NoOfTickets).Sum();
             var NoOfSeats = DB.Flights.Where(x => x.FlightID == FlightID).Select(x => x.NoOfSeats).ToList()[0];
             if (BookingsMade + NoOftickets > NoOfSeats)
                 return "SeatsNotAvailable";
@@ -42,6 +42,8 @@ namespace AirlineReservationSystem.Repositories
             DB.Reservations.Where(x => x.TicketNo == TicketNo)
                             .ToList()
                             .ForEach(f => f.Status = "Cancelled");
+
+            DB.SaveChanges();
 
             return DB.Reservations.Where(x => x.TicketNo == TicketNo).SingleOrDefault();
         }

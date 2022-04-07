@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AirlineReservationSystem.Migrations
 {
     [DbContext(typeof(AirlineDBContext))]
-    [Migration("20220407080306_Initial")]
+    [Migration("20220407083308_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,8 +23,9 @@ namespace AirlineReservationSystem.Migrations
 
             modelBuilder.Entity("AirlineReservationSystem.Entities.Flight", b =>
                 {
-                    b.Property<int>("FlightID")
-                        .HasColumnType("int");
+                    b.Property<string>("FlightID")
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("ArrivalTime")
                         .IsRequired()
@@ -80,8 +81,8 @@ namespace AirlineReservationSystem.Migrations
 
                     b.Property<string>("FlightID")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("varchar(30)");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<DateTime>("JourneyDate")
                         .HasColumnType("Date");
