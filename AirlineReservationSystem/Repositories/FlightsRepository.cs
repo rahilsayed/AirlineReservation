@@ -10,7 +10,13 @@ namespace AirlineReservationSystem.Repositories
     {
         private readonly AirlineDBContext DB = new AirlineDBContext();
 
-        public List<Flight> AddFlight(int FlightID, string Origin, string Destination, DateTime DepartureTime, DateTime ArrivalTime, int NumberOfSeats, float Fare)
+        public List<Flight> AddFlight(int FlightID, 
+                                        string Origin, 
+                                        string Destination, 
+                                        string DepartureTime, 
+                                        string ArrivalTime, 
+                                        int NumberOfSeats, 
+                                        float Fare)
         {
             Flight flight = new Flight();
             

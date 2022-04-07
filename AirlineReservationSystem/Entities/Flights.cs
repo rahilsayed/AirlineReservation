@@ -37,13 +37,13 @@ namespace AirlineReservationSystem.Entities
 
         //departure time of flight from source
         [Required]
-        [Column(TypeName = "Date")]
-        public DateTime DeptTime { get; set; }
+        [Column(TypeName = "varchar")]
+        public string DeptTime { get; set; }
 
         //arrival time of flight at destination
         [Required]
-        [Column(TypeName = "Date")]
-        public DateTime ArrivalTime { get; set; }
+        [Column(TypeName = "varchar")]
+        public string ArrivalTime { get; set; }
 
         //no of seats passenger wants to book
         [Required]

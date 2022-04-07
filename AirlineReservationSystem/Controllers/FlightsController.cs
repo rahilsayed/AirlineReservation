@@ -20,9 +20,9 @@ namespace AirlineReservationSystem.Controllers
             this.flightsRepository = flightsRepository;
         }
 
-        [HttpGet]
+        [HttpPut]
         [Route("FlightID/Origin/Destination/DepartureTime/ArrivalTime/NumberOfSeats/Fare")]
-        public List<Flight> AddFlight(int FlightID, string Origin, string Destination, DateTime DepartureTime, DateTime ArrivalTime, int NumberOfSeats, float Fare)
+        public List<Flight> AddFlight(int FlightID, string Origin, string Destination, string DepartureTime, string ArrivalTime, int NumberOfSeats, float Fare)
         {
             return flightsRepository.AddFlight(FlightID, Origin, Destination, DepartureTime, ArrivalTime, NumberOfSeats, Fare);
         }
