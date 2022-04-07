@@ -14,7 +14,6 @@ namespace AirlineReservationSystem.Entities
     {
         [Key] // for initialising as PK
         [Column(TypeName = "int")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; } //properties for ID
 
         //Username for admin login

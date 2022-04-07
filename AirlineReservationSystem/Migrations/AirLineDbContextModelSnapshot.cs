@@ -26,11 +26,13 @@ namespace AirlineReservationSystem.Migrations
 
                     b.Property<string>("ArrivalTime")
                         .IsRequired()
-                        .HasColumnType("varchar");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("DeptTime")
                         .IsRequired()
-                        .HasColumnType("varchar");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
 
                     b.Property<string>("Destination")
                         .IsRequired()
@@ -59,7 +61,9 @@ namespace AirlineReservationSystem.Migrations
             modelBuilder.Entity("AirlineReservationSystem.Entities.Reservation", b =>
                 {
                     b.Property<int>("TicketNo")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long>("ContactNo")
                         .HasColumnType("bigint");
@@ -104,7 +108,9 @@ namespace AirlineReservationSystem.Migrations
             modelBuilder.Entity("AirlineReservationSystem.Entities.User", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Password")
                         .IsRequired()

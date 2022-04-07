@@ -8,7 +8,7 @@ namespace AirlineReservationSystem.Repositories
 {
     public interface IReservationsRepository
     {
-        Reservation BookTicket(int FlightID);
+        string BookTicket(string FlightID, DateTime JourneyDate, string PassengerName, int ContactNo, string Email, int NoOftickets);
         Reservation CancelTicket(int TicketNo);
         Reservation ViewTicketStatus(int TicketNo);
     }

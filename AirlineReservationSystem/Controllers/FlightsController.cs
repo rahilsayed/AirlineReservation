@@ -22,14 +22,14 @@ namespace AirlineReservationSystem.Controllers
 
         [HttpPut]
         [Route("FlightID/Origin/Destination/DepartureTime/ArrivalTime/NumberOfSeats/Fare")]
-        public List<Flight> AddFlight(int FlightID, string Origin, string Destination, string DepartureTime, string ArrivalTime, int NumberOfSeats, float Fare)
+        public string AddFlight(string FlightID, string Origin, string Destination, string DepartureTime, string ArrivalTime, int NumberOfSeats, float Fare)
         {
             return flightsRepository.AddFlight(FlightID, Origin, Destination, DepartureTime, ArrivalTime, NumberOfSeats, Fare);
         }
 
         [HttpGet]
         [Route("FlightID")]
-        public List<Flight> RemoveFlight(int FlightID)
+        public List<Flight> RemoveFlight(string FlightID)
         {
             return flightsRepository.RemoveFlight(FlightID);
         }

@@ -10,7 +10,7 @@ namespace AirlineReservationSystem.Repositories
     {
         private readonly AirlineDBContext DB = new AirlineDBContext();
 
-        public List<Flight> AddFlight(int FlightID, 
+        public string AddFlight(string FlightID,
                                         string Origin, 
                                         string Destination, 
                                         string DepartureTime, 
@@ -18,39 +18,48 @@ namespace AirlineReservationSystem.Repositories
                                         int NumberOfSeats, 
                                         float Fare)
         {
-            Flight flight = new Flight();
-            
-            flight.FlightID = FlightID;
-            flight.LaunchDate = DateTime.Now;
-            flight.Origin = Origin;
-            flight.Destination = Destination;
-            flight.DeptTime = DepartureTime;
-            flight.ArrivalTime = ArrivalTime;
-            flight.NoOfSeats = NumberOfSeats;
-            flight.Fare = Fare;
 
-            DB.Flights.Add(flight);
-            DB.SaveChanges();
+            var flights = DB.Flights.ToList();
 
-            var result = DB.Flights.ToList();
-            return result;
+            //check if the FlightID already exists
+            var results = DB.Flights.Where(x => x.FlightID == FlightID).ToList();
+            if (results.Count > 0)
+            {
+                return "FlightExistsError";
+            }
+            else
+            {
+                Flight flight = new Flight();
+
+                flight.FlightID = FlightID;
+                flight.LaunchDate = DateTime.Today;
+                flight.Origin = Origin;
+                flight.Destination = Destination;
+                flight.DeptTime = DepartureTime;
+                flight.ArrivalTime = ArrivalTime;
+                flight.NoOfSeats = NumberOfSeats;
+                flight.Fare = Fare;
+
+                DB.Flights.Add(flight);
+                DB.SaveChanges();
+
+                return "FlightAddedSucccesfully";
+            }
         }
 
-        public List<Flight> RemoveFlight(int FlightID)
+        public List<Flight> RemoveFlight(string FlightID)
         {
             var flight = DB.Flights.Where(x => x.FlightID == FlightID).SingleOrDefault();
 
             DB.Remove(flight);
             DB.SaveChanges();
 
-            var result = DB.Flights.ToList();
-            return result;
+            return DB.Flights.ToList();
         }
 
         public List<Flight> ViewFlights()
         {
-            var result = DB.Flights.ToList();
-            return result;
+            return DB.Flights.ToList();
         }
     }
 }

@@ -12,13 +12,12 @@ namespace AirlineReservationSystem.Entities
     public class Reservation
     {
         [Key] // TicketNo generated after Booking a flight
-        [Column(TypeName = "int")]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column(TypeName = "int")]        
         public int TicketNo { get; set; }
 
         //FlightNo of booked FLight
         [Required]
-        [StringLength(30)]
+        [StringLength(10)]
         [Column(TypeName = "varchar")]
         public string FlightID { get; set; }
 

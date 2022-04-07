@@ -13,9 +13,10 @@ namespace AirlineReservationSystem.Entities
     {
         //FlightId 
         [Key]
-        [Column(TypeName = "int")]
+        [StringLength(10)]
+        [Column(TypeName = "varchar")]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int FlightID { get; set; }
+        public string FlightID { get; set; }
 
         // Date when the Flight was added to the fleet
         [Required]
@@ -38,11 +39,13 @@ namespace AirlineReservationSystem.Entities
 
         //departure time of flight from source
         [Required]
+        [StringLength(10)]
         [Column(TypeName = "varchar")]
         public string DeptTime { get; set; }
 
         //arrival time of flight at destination
         [Required]
+        [StringLength(10)]
         [Column(TypeName = "varchar")]
         public string ArrivalTime { get; set; }
 
@@ -55,6 +58,7 @@ namespace AirlineReservationSystem.Entities
         [Required]
         [Column(TypeName = "decimal")]
         public float Fare { get; set; }
+
 
     }
 }

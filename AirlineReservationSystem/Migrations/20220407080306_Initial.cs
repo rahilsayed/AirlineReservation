@@ -15,8 +15,8 @@ namespace AirlineReservationSystem.Migrations
                     LaunchDate = table.Column<DateTime>(type: "Date", nullable: false),
                     Origin = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
                     Destination = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
-                    DeptTime = table.Column<string>(type: "varchar", nullable: false),
-                    ArrivalTime = table.Column<string>(type: "varchar", nullable: false),
+                    DeptTime = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
+                    ArrivalTime = table.Column<string>(type: "varchar(10)", maxLength: 10, nullable: false),
                     NoOfSeats = table.Column<int>(type: "int", nullable: false),
                     Fare = table.Column<decimal>(type: "decimal(38,17)", nullable: false)
                 },
@@ -29,7 +29,8 @@ namespace AirlineReservationSystem.Migrations
                 name: "Reservations",
                 columns: table => new
                 {
-                    TicketNo = table.Column<int>(type: "int", nullable: false),
+                    TicketNo = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FlightID = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
                     DateOfBooking = table.Column<DateTime>(type: "Date", nullable: false),
                     JourneyDate = table.Column<DateTime>(type: "Date", nullable: false),
@@ -49,7 +50,8 @@ namespace AirlineReservationSystem.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
                     Password = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false)
                 },
