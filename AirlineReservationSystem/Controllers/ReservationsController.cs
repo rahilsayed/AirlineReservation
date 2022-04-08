@@ -20,23 +20,24 @@ namespace AirlineReservationSystem.Controllers
             this.reservationsRepository = reservationsRepository;
         }
 
-        [HttpPost]
+        [HttpPut]
         public string BookTicket(string FlightID, DateTime JourneyDate, string PassengerName, int ContactNo, string Email, int NoOftickets)
         {
             return reservationsRepository.BookTicket(FlightID,  JourneyDate,  PassengerName,  ContactNo,  Email,  NoOftickets);
         }
 
         [HttpPut]
-        [Route("{TicketNo}")]
+        [Route("TicketNo")]
         public Reservation CancelTicket(int TicketNo)
         {
             return reservationsRepository.CancelTicket(TicketNo);
         }
         
         [HttpGet]
-        public Reservation ViewTicketStatus(string PassengerName)
+        [Route("TicketNo")]
+        public Reservation ViewTicketStatus(int TicketNo)
         {
-            return reservationsRepository.ViewTickets(PassengerName);
+            return reservationsRepository.ViewTicketStatus(TicketNo);
         }
     }
 }

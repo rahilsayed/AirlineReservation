@@ -48,9 +48,9 @@ namespace AirlineReservationSystem.Repositories
             return DB.Reservations.Where(x => x.TicketNo == TicketNo).SingleOrDefault();
         }
 
-        public Reservation ViewTickets(string PassengerName)
+        public Reservation ViewTicketStatus(int TicketNo)
         {
-            return DB.Reservations.Where(x => x.PassengerName == PassengerName)
+            return DB.Reservations.Where(x => x.TicketNo == TicketNo)
                                     .SingleOrDefault();
         }
     }
