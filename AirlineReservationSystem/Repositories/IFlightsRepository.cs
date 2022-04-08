@@ -8,8 +8,9 @@ namespace AirlineReservationSystem.Repositories
 {
     public interface IFlightsRepository
     {
-        List<Flight> ViewFlights(string Source,string Destination);
+        List<Flight> ViewFlights();
         string AddFlight(string FlightID, string Origin, string Destination, string DepartureTime, string ArrivalTime, int NumberOfSeats, float Fare);
         List<Flight> RemoveFlight(string FlightID);
+
     }
 }
