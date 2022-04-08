@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AirlineReservationSystem.Repositories;
+using Microsoft.AspNetCore.Cors;
 
 namespace AirlineReservationSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors]
     public class UsersController : ControllerBase
     {
         private readonly IUsersRepository usersRepository;
@@ -20,7 +22,7 @@ namespace AirlineReservationSystem.Controllers
         }
 
         [HttpGet]
-        [Route("user/pw")]
+        [Route("login")]
         public string Authenticate(string user, string pw)
         {
             return usersRepository.Authenticate(user, pw);

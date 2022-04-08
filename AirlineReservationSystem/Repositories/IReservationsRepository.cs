@@ -10,6 +10,6 @@ namespace AirlineReservationSystem.Repositories
     {
         string BookTicket(string FlightID, DateTime JourneyDate, string PassengerName, int ContactNo, string Email, int NoOftickets);
         Reservation CancelTicket(int TicketNo);
-        Reservation ViewTicketStatus(int TicketNo);
+        Reservation ViewTickets(string PassengerName);
     }
 }

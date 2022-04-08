@@ -20,24 +20,22 @@ namespace AirlineReservationSystem.Controllers
             this.flightsRepository = flightsRepository;
         }
 
-        [HttpPut]
-        [Route("FlightID/Origin/Destination/DepartureTime/ArrivalTime/NumberOfSeats/Fare")]
-        public string AddFlight(string FlightID, string Origin, string Destination, string DepartureTime, string ArrivalTime, int NumberOfSeats, float Fare)
+        [HttpPost]
+        public string AddFlight(Flight flight)
         {
-            return flightsRepository.AddFlight(FlightID, Origin, Destination, DepartureTime, ArrivalTime, NumberOfSeats, Fare);
+            return flightsRepository.AddFlight(flight.FlightID, flight.Origin, flight.Destination, flight.DeptTime, flight.ArrivalTime, flight.NoOfSeats, flight.Fare);
         }
 
-        [HttpGet]
-        [Route("FlightID")]
+        [HttpDelete]
         public List<Flight> RemoveFlight(string FlightID)
         {
             return flightsRepository.RemoveFlight(FlightID);
         }
 
         [HttpGet]
-        public List<Flight> ViewFlights()
+        public List<Flight> ViewFlights(string Source,string Destination)
         {
-            return flightsRepository.ViewFlights();
+            return flightsRepository.ViewFlights(Source,Destination);
         }
     }
 }
